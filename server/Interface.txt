@@ -1,0 +1,26 @@
+
+interface StorePair{
+	public function :
+		bool Set(key, value);
+		value Get(key);
+		bool Delete(key);
+}
+
+interface Controller{
+	public function :
+		void Execute(entity, reqest, response);
+}
+
+interface Validator{
+	public function :
+		result Validate(entity); // result - object;  property - publicInfo, privateInfo; publicInfo - custom object; privateInfo - custom; 
+}
+
+interface Core{ // this global object
+	public property :
+		controllers - array; key - string, name controller; value - object, instance of the class;
+		stores - array; key - string, name store; value - object, instance of the class;
+		entity - array; key - string, name controller; value - string, name store;
+	public function :
+		store GetStore(name) // return instance Store by name;
+}
