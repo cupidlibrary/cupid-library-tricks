@@ -4,6 +4,7 @@ interface StorePair{
 		bool Set(key, value);
 		value Get(key);
 		bool Delete(key);
+		void Destroy();
 }
 
 interface Controller{
