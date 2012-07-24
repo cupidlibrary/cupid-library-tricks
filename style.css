@@ -1,0 +1,123 @@
+body { 
+	background: #EBEBEB url(images/header_border.gif) repeat-x;
+	font: 12px arial, sans-serif;
+}
+
+div.head {
+	width: 990px;
+	height: 30px;
+	margin: 0 auto;
+	padding: 25px 5px 5px 5px;	
+}
+		
+div.logo {
+	position: relative;
+	float: left;
+	width: auto;		
+	left: -17px;		
+	top: -17px;
+}
+div.search {
+	float: left;
+	width: auto;	
+}
+		
+div.nav {
+	float: left;
+	padding: 5px 5px 5px 5px;
+	width: auto;
+	font: 13px arial, sans-serif;
+}
+a.nav {
+	color: #333;
+	text-decoration: none;
+}
+
+div.signin {
+	float: right;
+	padding: 5px 5px 5px 5px;
+	width: auto;
+	font: 13px arial, sans-serif;
+}
+a.signin {
+	color: #333;
+}
+
+span.separator {
+	color: #CCC;
+}
+
+div.contetbox {
+	display: block;
+	position: relative;
+	width: 990px;
+	height: 768px;
+	margin: 0 auto;
+	padding: 25px 5px 5px 5px;	
+}
+
+div.main {
+	float: left;
+	width: 690px;
+}
+
+div.sidebar {
+	float: left;
+	width: 290px;
+	overflow: hidden;
+	word-wrap: break-word;
+	text-align: left;
+	margin: 5;
+}
+
+div.horizontal-rule {
+	margin: 0;
+	position: relative;
+	height: 0;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid white;
+	z-index: -99;
+}
+
+ol.top-popular-result {
+	list-style: none;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+li.result-item {
+	display: list-item;
+	width: 680px;
+	height: 110px;
+	margin: 5;
+	border: 5;
+}
+
+li.result-item:hover {
+	background-color: #FFFFFF;
+}
+
+div.lib-logo {
+	float: left;
+	width: 128px;
+	height: 104px;
+	margin: 5 5 5 5;
+}
+
+div.lib-description {
+	overflow: hidden;
+	word-wrap: break-word;
+	float: left;
+	width: 536;
+}
+
+a.lib-description {
+	font: 17px arial, sans-serif;
+	color: #333;
+	text-decoration: none;
+}
+
+a.lib-description:hover {
+	color: blue;
+	text-decoration: underline;
+}

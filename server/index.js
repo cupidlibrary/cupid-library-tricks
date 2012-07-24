@@ -2,6 +2,11 @@
 var http = require('http');
 var core = require('./Exports');
 
+var fileSystem = require('fs');
+var util = require('util');
+
+var pathStatic = 'D:\\cupidlibrary'; // папка со статикой
+    
 function onRequest(request, response){
     var postData = '';
     
@@ -10,10 +15,39 @@ function onRequest(request, response){
         postData += postDataChunk;
     });
 
-    request.addListener("end", function(){
-        var data, controller;
+    request.addListener("end", function(){   
+        if (request.method == 'GET'){
+            Get();
+        }
+        else{
+            Post();
+        }
+    });
+    
+    function Get(){
+        var filePath;
+        var stat, readStream;
         
-        //postData = '{"controller":"autorisation", "entity":{"login":"mylogin", "password":"mypassword"}}'; // Debug
+        if(request.url == '/') request.url = '/index.html';
+        
+        filePath = pathStatic + request.url;
+        if (fileSystem.existsSync(filePath)){
+            stat = fileSystem.statSync(filePath);
+            readStream = fileSystem.createReadStream(filePath);
+        
+            response.writeHead(200, {'Content-Length': stat.size});
+            util.pump(readStream, response);
+        }else{
+            response.writeHead(200, {"Content-Type": "application/json"});
+            response.write("not file exists");
+            response.end();
+        }
+    }
+    
+    function Post(){
+        var data, controller;
+       
+        //postData = '{"controller":"search", "entity":{"login":"mylogin", "password":"mypassword"}}'; // Debuga
         try{
 		  data = JSON.parse(postData);
         }
@@ -22,7 +56,7 @@ function onRequest(request, response){
             response.write("{error:\"invalid_json\"}");
             response.end();
         }
-        
+       
         if (data != undefined) controller = core.controllers[data.controller];
         
         if (controller != undefined && data.entity != undefined){
@@ -33,7 +67,7 @@ function onRequest(request, response){
             response.write("{error:\"invalid_parametrs\"}");
             response.end();
         } 
-    });
+    }
 }
 
-http.createServer(onRequest).listen(8081);
+http.createServer(onRequest).listen(8080);
